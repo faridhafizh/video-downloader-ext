@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+  <!-- Background with smooth rounded corners -->
+  <rect width="120" height="120" x="4" y="4" rx="28" fill="url(#grad)" />
+  
+  <!-- Outer glowing ring fragment -->
+  <path d="M 38 64 A 26 26 0 1 1 90 64" fill="none" stroke="rgba(255, 255, 255, 0.3)" stroke-width="6" stroke-linecap="round" />
+  
+  <!-- Play triangle symbol -->
+  <polygon points="56,48 56,80 82,64" fill="#ffffff" />
+  
+  <!-- Downward arrow shaft and head -->
+  <path d="M 64 24 L 64 42" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+  
+  <!-- Horizontal base line -->
+  <path d="M 44 94 L 84 94" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" />
+</svg>
