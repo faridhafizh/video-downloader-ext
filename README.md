@@ -1,3 +1,5 @@
+
+
 <div align="center">
 
 <!-- Logo -->
@@ -66,7 +68,7 @@ Because this is a developer extension, you can load it directly into your Chromi
 
 1. **Clone or Download the Repository**:
    ```bash
-   git clone https://github.com/yourusername/blob-vids-downloader.git
+   git clone https://github.com/faridhafizh/video-downloader-ext.git
    ```
    *(Or download the zip file and extract it to a directory).*
 
