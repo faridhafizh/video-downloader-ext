@@ -122,10 +122,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       const ext = isHls ? 'ts' : (video.type.toLowerCase().includes('webm') ? 'webm' : 'mp4');
       const tagClass = isHls ? 'tag-hls' : (ext === 'mp4' ? 'tag-mp4' : 'tag-other');
 
-      // Card structure HTML
+      // Keep website-controlled values out of this HTML template. Even with
+      // Manifest V3's script restrictions, injected markup can change the UI
+      // or load external resources when the popup opens.
       card.innerHTML = `
         <div class="card-header">
-          <div class="video-title" title="${video.title}">${video.title}</div>
+          <div class="video-title"></div>
           <span class="tag ${tagClass}">${isHls ? 'HLS Stream' : ext}</span>
         </div>
         <div class="card-info">
@@ -133,9 +135,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
             </svg>
-            <span>${domain}</span>
+            <span class="video-domain"></span>
           </div>
-          <div class="info-item" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${video.url}">
+          <div class="info-item video-source" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
             </svg>
@@ -164,6 +166,14 @@ document.addEventListener('DOMContentLoaded', async () => {
           </div>
         </div>
       `;
+
+      // DOM properties preserve titles, decoded filenames, and URLs as literal
+      // text, including quotes and angle brackets, without parsing them as HTML.
+      const titleEl = card.querySelector('.video-title');
+      titleEl.textContent = video.title;
+      titleEl.title = video.title;
+      card.querySelector('.video-domain').textContent = domain;
+      card.querySelector('.video-source').title = video.url;
 
       videoListDiv.appendChild(card);
 

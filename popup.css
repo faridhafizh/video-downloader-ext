@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
-
 :root {
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
@@ -30,7 +28,8 @@ body {
   width: 380px;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: 'Outfit', sans-serif;
+  /* Use local fonts so opening the popup does not contact a font provider. */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   overflow-x: hidden;
   padding: 0;
   margin: 0;

@@ -151,7 +151,7 @@ blob-vids-downloader/
 ├── background.js              # Service worker intercepting network traffic
 ├── manifest.json              # Extension metadata and Manifest V3 details
 ├── popup.html                 # Visual layout of the dropdown extension panel
-├── popup.css                  # Modern Outfit typography and glassmorphic styles
+├── popup.css                  # Local system typography and glassmorphic styles
 ├── popup.js                   # Application controller, DOM scraper, and HLSDownloader
 │
 ├── icon.svg                   # Vector source logo (indigo/purple play-down gradient)
